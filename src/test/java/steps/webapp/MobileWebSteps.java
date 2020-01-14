@@ -25,7 +25,7 @@ public class MobileWebSteps extends DriverSetup {
     }
 
     public void fillTextInSearchField(String text) {
-        searchPage.fillTextInSearchField(text);
+        searchPage.fillTextInSearchField(text + '\n');
     }
 
     public List<WebElement> getResults() {

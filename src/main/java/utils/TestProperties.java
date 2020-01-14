@@ -22,7 +22,7 @@ public class TestProperties extends Properties {
      * @throws IOException
      */
     private Properties getCurrentProps() throws IOException {
-        FileInputStream in = new FileInputStream(propFile);
+        FileInputStream in = new FileInputStream(String.format("%s/%s", System.getProperty("user.dir"), propFile));
         currentProps.load(in);
         in.close();
         return currentProps;

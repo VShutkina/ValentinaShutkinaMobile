@@ -20,7 +20,7 @@ public class DriverSetup extends TestProperties {
 
     // Properties to be read
     protected String AUT; // (mobile) app under testing
-    protected String SUT; // site under testing
+    protected static String SUT; // site under testing
     protected String PLATFORM;
     protected String BROWSER;
     protected String DRIVER;
@@ -43,6 +43,7 @@ public class DriverSetup extends TestProperties {
         capabilities = new DesiredCapabilities();
         capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, DEVICE);
         capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, PLATFORM);
+        //capabilities.setCapability("appium:chromeOptions", ImmutableMap.of("w3c", false));
 
         // Setup type of application (native or web)
         if (AUT != null && SUT == null) {
