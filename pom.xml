@@ -14,12 +14,12 @@
         <encoding.version>UTF-8</encoding.version>
 
         <!-- Libraries version -->
-        <appium.version>LATEST</appium.version>
+        <appium.version>7.3.0</appium.version>
         <testng.version>7.0.0</testng.version>
-        <selenium.version>3.141.59</selenium.version>
 
         <!-- Plugins version -->
         <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
+        <maven.surefire.plugin.version>2.22.2</maven.surefire.plugin.version>
     </properties>
 
     <dependencies>
@@ -27,24 +27,12 @@
             <groupId>io.appium</groupId>
             <artifactId>java-client</artifactId>
             <version>${appium.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>${testng.version}</version>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-api</artifactId>
-            <version>${selenium.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.appium</groupId>
-            <artifactId>java-client</artifactId>
-            <version>7.3.0</version>
-            <scope>compile</scope>
         </dependency>
     </dependencies>
     <profiles>
@@ -54,7 +42,7 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <suite.file>src/test/resources/native.xml</suite.file>
+                <suite.file>src/test/resources/Hw2NativeTestsSuite.xml</suite.file>
             </properties>
         </profile>
         <profile>
@@ -63,7 +51,7 @@
                 <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
-                <suite.file>src/test/resources/web.xml</suite.file>
+                <suite.file>src/test/resources/Hw2WebTestsSuite.xml</suite.file>
             </properties>
         </profile>
     </profiles>
@@ -77,6 +65,16 @@
                     <source>${java.source.version}</source>
                     <target>${java.target.version}</target>
                     <encoding>${encoding.version}</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven.surefire.plugin.version}</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>${suite.file}</suiteXmlFile>
+                    </suiteXmlFiles>
                 </configuration>
             </plugin>
         </plugins>

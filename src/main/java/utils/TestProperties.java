@@ -6,17 +6,33 @@ import java.util.Properties;
 
 public class TestProperties extends Properties {
 
-    protected static TestProperties testProperties;
+    private static final String PROPERTIES_PATH = "src/main/resources/test.properties";
+    private Properties currentProps = new Properties();
 
-    public static TestProperties getTestProperties() {
-        if (testProperties == null) {
-            testProperties = new TestProperties();
-            try {
-                testProperties.load(new FileInputStream("src/main/resources/test.properties"));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+    /**
+     * Read properties
+     *
+     * @return
+     * @throws IOException
+     */
+    private Properties getCurrentProps() throws IOException {
+        FileInputStream in = new FileInputStream(PROPERTIES_PATH);
+        currentProps.load(in);
+        in.close();
+        return currentProps;
+    }
+
+    /**
+     * Get property value
+     *
+     * @param propKey
+     * @return
+     * @throws IOException
+     */
+    protected String getProp(String propKey) throws IOException {
+        if (!currentProps.containsKey(propKey)) {
+            currentProps = getCurrentProps();
         }
-        return testProperties;
+        return currentProps.getProperty(propKey, null);
     }
 }
