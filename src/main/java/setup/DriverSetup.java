@@ -43,7 +43,6 @@ public class DriverSetup extends TestProperties {
         capabilities = new DesiredCapabilities();
         capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, DEVICE);
         capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, PLATFORM);
-        //capabilities.setCapability("appium:chromeOptions", ImmutableMap.of("w3c", false));
 
         // Setup type of application (native or web)
         if (AUT != null && SUT == null) {

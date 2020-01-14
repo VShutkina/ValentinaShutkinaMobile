@@ -18,6 +18,10 @@ public class BudgetActivityPage extends AbstractBasePage {
         super(driver);
     }
 
+    public By pageTitleLocator() {
+        return By.id("platkovsky.alexey.epamtestapp:id/action_bar");
+    }
+
     public String getPageTitle() {
         return pageTitle.findElement(By.className("android.widget.TextView")).getText();
     }

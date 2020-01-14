@@ -1,6 +1,7 @@
 package steps.nativeapp;
 
 import io.appium.java_client.AppiumDriver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import pages.nativeapp.BudgetActivityPage;
 import pages.nativeapp.MainPage;
@@ -67,5 +68,9 @@ public class MobileNativeSteps extends DriverSetup {
 
     public String getPageTitle() {
         return budgetActivityPage.getPageTitle();
+    }
+
+    public By pageTitleLocator() {
+        return budgetActivityPage.pageTitleLocator();
     }
 }

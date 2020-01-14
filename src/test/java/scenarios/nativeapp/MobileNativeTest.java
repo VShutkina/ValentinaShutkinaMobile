@@ -18,9 +18,9 @@ import static org.testng.Assert.assertEquals;
 public class MobileNativeTest extends DriverSetup {
 
     private static final String TITLE = "BudgetActivity";
-    private String EMAIL = getProp("email");
-    private String USERNAME = getProp("userName");
-    private String PASSWORD = getProp("password");
+    private String EMAIL = "test@gmail.com";
+    private String USERNAME = "Valentina";
+    private String PASSWORD = "Qwerty2235";
 
     public MobileNativeTest() throws IOException {
 
@@ -52,11 +52,14 @@ public class MobileNativeTest extends DriverSetup {
         nativeSteps.fillLoginEmailTextField(EMAIL);
         nativeSteps.fillPasswordTextField(PASSWORD);
         nativeSteps.clickSighInButton();
+        // Wait for Budget Activity page title presented
+        driverWait().until(ExpectedConditions.presenceOfElementLocated(nativeSteps.pageTitleLocator()));
         // Checking if the Budget Activity page title
         // matches to expected title
-        assertEquals(nativeSteps.getPageTitle(), TITLE,
+        String actualTitle = nativeSteps.getPageTitle();
+        assertEquals(actualTitle, TITLE,
                 String.format("Expected %s page title, but got %s",
-                        TITLE, nativeSteps.getPageTitle()));
+                        TITLE, actualTitle));
     }
 
     @AfterSuite(groups = "native", description = "Close driver on all tests completion")
