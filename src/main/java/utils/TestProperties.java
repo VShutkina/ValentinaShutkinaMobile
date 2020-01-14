@@ -1,13 +1,19 @@
 package utils;
 
+import setup.PropertyFile;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
 public class TestProperties extends Properties {
 
-    private static final String PROPERTIES_PATH = "src/main/resources/test.properties";
     private Properties currentProps = new Properties();
+    String propFile;
+
+    protected void setPropertyFile(PropertyFile propertyFile) {
+        propFile = propertyFile.getFileType();
+    }
 
     /**
      * Read properties
@@ -16,7 +22,7 @@ public class TestProperties extends Properties {
      * @throws IOException
      */
     private Properties getCurrentProps() throws IOException {
-        FileInputStream in = new FileInputStream(PROPERTIES_PATH);
+        FileInputStream in = new FileInputStream(propFile);
         currentProps.load(in);
         in.close();
         return currentProps;

@@ -22,7 +22,7 @@ public class MainPage extends AbstractBasePage {
     @FindBy(id = "platkovsky.alexey.epamtestapp:id/register_button")
     private WebElement registerButton;
 
-    protected MainPage(AppiumDriver driver) {
+    public MainPage(AppiumDriver driver) {
         super(driver);
     }
 

@@ -13,7 +13,7 @@ public class SearchPage extends AbstractBasePage {
     @FindBy(name = "q")
     private WebElement searchField;
 
-    protected SearchPage(AppiumDriver driver) {
+    public SearchPage(AppiumDriver driver) {
         super(driver);
     }
 

@@ -27,7 +27,7 @@ public class RegistrationPage extends AbstractBasePage {
     @FindBy(id = "platkovsky.alexey.epamtestapp:id/register_new_account_button")
     private WebElement registerButton;
 
-    protected RegistrationPage(AppiumDriver driver) {
+    public RegistrationPage(AppiumDriver driver) {
         super(driver);
     }
 

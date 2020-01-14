@@ -14,7 +14,7 @@ public class BudgetActivityPage extends AbstractBasePage {
     @FindBy(id = "platkovsky.alexey.epamtestapp:id/action_bar")
     private WebElement pageTitle;
 
-    protected BudgetActivityPage(AppiumDriver driver) {
+    public BudgetActivityPage(AppiumDriver driver) {
         super(driver);
     }
 

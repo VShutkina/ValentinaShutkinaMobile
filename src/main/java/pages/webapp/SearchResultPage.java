@@ -15,7 +15,7 @@ public class SearchResultPage extends AbstractBasePage {
     @FindBy(xpath = ".//*[@id='rso']/div[@class='srg']/div")
     List<WebElement> results;
 
-    protected SearchResultPage(AppiumDriver driver) {
+    public SearchResultPage(AppiumDriver driver) {
         super(driver);
     }
 
