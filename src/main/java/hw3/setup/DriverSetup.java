@@ -22,10 +22,11 @@ public class DriverSetup extends TestProperties {
     protected static String AUT; // (mobile) app under testing
     protected static String SUT; // site under testing
     protected static String PLATFORM;
-    protected static String BROWSER;
     protected static String DRIVER;
     // protected static String DEVICE;
     protected static String UDID;
+    protected static String APP_PACKAGE;
+    protected static String APP_ACTIVITY;
 
     /**
      * This method prepares driver and sets capabilities
@@ -39,10 +40,11 @@ public class DriverSetup extends TestProperties {
         // properties initialization
         AUT = getProp("aut");
         SUT = getProp("sut") == null ? null : "https://" + getProp("sut");
-        //BROWSER = getProp("browser");
         PLATFORM = getProp("platform");
         DRIVER = getProp("driver");
         UDID = getProp("udid");
+        APP_ACTIVITY = getProp("appActivity");
+        APP_PACKAGE = getProp("appPackage");
 
 
         // Setup test platform: Android or iOS. Browser also depends on a platform.
@@ -63,6 +65,8 @@ public class DriverSetup extends TestProperties {
         if (AUT != null && SUT == null) {
             File app = new File(AUT);
             capabilities.setCapability(MobileCapabilityType.APP, app.getAbsolutePath());
+            capabilities.setCapability("appPackage", APP_PACKAGE);
+            capabilities.setCapability("appActivity", APP_ACTIVITY);
         } else if (SUT != null && AUT == null) {
             capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, browser);
         } else {

@@ -26,13 +26,19 @@ public class MobileNativeTest extends DriverSetup {
 
     }
 
-    @BeforeSuite(groups = "native", description = "Prepare driver to run native test(s)")
+    @BeforeSuite(groups = {"native"}, description = "Prepare driver to run native test(s)")
     void setUpNative() throws Exception {
         setPropertyFile(PropertyFile.NATIVE);
         prepareDriver();
     }
 
-    @Test(groups = "native", description = "Test for native EPAMTestApp application")
+    @BeforeSuite(groups = {"ios"}, description = "Prepare driver to run native test(s)")
+    void setUpIosNative() throws Exception {
+        setPropertyFile(PropertyFile.IOS);
+        prepareDriver();
+    }
+
+    @Test(groups = {"native", "ios"}, description = "Test for native EPAMTestApp application")
     public void NativeAppTest() throws Exception {
         MobileNativeSteps nativeSteps = new MobileNativeSteps(driver);
         //1. Click register button
@@ -62,7 +68,7 @@ public class MobileNativeTest extends DriverSetup {
                         TITLE, actualTitle));
     }
 
-    @AfterSuite(groups = "native", description = "Close driver on all tests completion")
+    @AfterSuite(groups = {"native", "ios"}, description = "Close driver on all tests completion")
     public void tearDown() throws Exception {
         driver.quit();
     }
