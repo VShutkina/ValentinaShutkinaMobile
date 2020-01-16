@@ -1,9 +1,10 @@
-package setup;
+package hw3.setup;
 
 public enum PropertyFile {
 
     WEB("web.properties"),
-    NATIVE("native.properties");
+    NATIVE("native.properties"),
+    IOS("ios.properties");
 
     String appType;
 

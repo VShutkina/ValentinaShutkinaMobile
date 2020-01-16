@@ -1,6 +1,6 @@
-package utils;
+package hw3.utils;
 
-import setup.PropertyFile;
+import hw3.setup.PropertyFile;
 
 import java.io.FileInputStream;
 import java.io.IOException;

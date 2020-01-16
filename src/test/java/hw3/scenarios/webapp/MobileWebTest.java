@@ -1,12 +1,12 @@
-package scenarios.webapp;
+package hw3.scenarios.webapp;
 
+import hw3.setup.DriverSetup;
+import hw3.setup.PropertyFile;
+import hw3.steps.webapp.MobileWebSteps;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
-import setup.DriverSetup;
-import setup.PropertyFile;
-import steps.webapp.MobileWebSteps;
 
 import java.io.IOException;
 

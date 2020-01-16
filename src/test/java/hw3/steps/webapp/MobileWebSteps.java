@@ -1,10 +1,10 @@
-package steps.webapp;
+package hw3.steps.webapp;
 
+import hw3.pages.webapp.SearchPage;
+import hw3.pages.webapp.SearchResultPage;
+import hw3.setup.DriverSetup;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.WebElement;
-import pages.webapp.SearchPage;
-import pages.webapp.SearchResultPage;
-import setup.DriverSetup;
 
 import java.util.List;
 

@@ -1,12 +1,12 @@
-package scenarios.nativeapp;
+package hw3.scenarios.nativeapp;
 
+import hw3.setup.DriverSetup;
+import hw3.setup.PropertyFile;
+import hw3.steps.nativeapp.MobileNativeSteps;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
-import setup.DriverSetup;
-import setup.PropertyFile;
-import steps.nativeapp.MobileNativeSteps;
 
 import java.io.IOException;
 

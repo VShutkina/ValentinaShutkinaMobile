@@ -1,10 +1,10 @@
-package setup;
+package hw3.setup;
 
+import hw3.utils.TestProperties;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import utils.TestProperties;
 
 import java.io.File;
 import java.net.URL;
@@ -19,12 +19,13 @@ public class DriverSetup extends TestProperties {
     protected DesiredCapabilities capabilities;
 
     // Properties to be read
-    protected String AUT; // (mobile) app under testing
+    protected static String AUT; // (mobile) app under testing
     protected static String SUT; // site under testing
-    protected String PLATFORM;
-    protected String BROWSER;
-    protected String DRIVER;
-    protected String DEVICE;
+    protected static String PLATFORM;
+    protected static String BROWSER;
+    protected static String DRIVER;
+    // protected static String DEVICE;
+    protected static String UDID;
 
     /**
      * This method prepares driver and sets capabilities
@@ -32,16 +33,30 @@ public class DriverSetup extends TestProperties {
      * @throws Exception
      */
     protected void prepareDriver() throws Exception {
+        capabilities = new DesiredCapabilities();
+        String browser;
+
         // properties initialization
         AUT = getProp("aut");
         SUT = getProp("sut") == null ? null : "https://" + getProp("sut");
-        BROWSER = getProp("browser");
+        //BROWSER = getProp("browser");
         PLATFORM = getProp("platform");
         DRIVER = getProp("driver");
-        DEVICE = getProp("device");
+        UDID = getProp("udid");
 
-        capabilities = new DesiredCapabilities();
-        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, DEVICE);
+
+        // Setup test platform: Android or iOS. Browser also depends on a platform.
+        switch (PLATFORM) {
+            case "Android":
+                capabilities.setCapability(MobileCapabilityType.UDID, UDID);
+                browser = "Chrome";
+                break;
+            case "iOS":
+                browser = "Safari";
+                break;
+            default:
+                throw new Exception("Unknown mobile platform");
+        }
         capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, PLATFORM);
 
         // Setup type of application (native or web)
@@ -49,7 +64,7 @@ public class DriverSetup extends TestProperties {
             File app = new File(AUT);
             capabilities.setCapability(MobileCapabilityType.APP, app.getAbsolutePath());
         } else if (SUT != null && AUT == null) {
-            capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, BROWSER);
+            capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, browser);
         } else {
             throw new Exception("Unclear type of mobile app");
         }

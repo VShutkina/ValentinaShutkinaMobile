@@ -1,12 +1,12 @@
-package steps.nativeapp;
+package hw3.steps.nativeapp;
 
+import hw3.pages.nativeapp.BudgetActivityPage;
+import hw3.pages.nativeapp.MainPage;
+import hw3.pages.nativeapp.RegistrationPage;
+import hw3.setup.DriverSetup;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import pages.nativeapp.BudgetActivityPage;
-import pages.nativeapp.MainPage;
-import pages.nativeapp.RegistrationPage;
-import setup.DriverSetup;
 
 public class MobileNativeSteps extends DriverSetup {
 

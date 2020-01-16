@@ -1,10 +1,10 @@
-package pages.nativeapp;
+package hw3.pages.nativeapp;
 
+import hw3.pages.AbstractBasePage;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pages.AbstractBasePage;
 
 /**
  * The Budget Activity page

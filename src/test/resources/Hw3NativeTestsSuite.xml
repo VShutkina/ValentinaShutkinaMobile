@@ -1,8 +1,8 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Web Tests Suite">
-    <test name="Web Tests">
+<suite name="Native Tests Suite">
+    <test name="Native Tests">
         <classes>
-            <class name="scenarios.webapp.MobileWebTest">
+            <class name="hw3.scenarios.nativeapp.MobileNativeTest">
             </class>
         </classes>
     </test>

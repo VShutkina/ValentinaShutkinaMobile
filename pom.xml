@@ -42,7 +42,7 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <suite.file>src/test/resources/Hw2NativeTestsSuite.xml</suite.file>
+                <suite.file>src/test/resources/Hw3NativeTestsSuite.xml</suite.file>
             </properties>
         </profile>
         <profile>
@@ -51,7 +51,16 @@
                 <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
-                <suite.file>src/test/resources/Hw2WebTestsSuite.xml</suite.file>
+                <suite.file>src/test/resources/Hw3WebTestsSuite.xml</suite.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>iOS</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>src/test/resources/Hw3IOSTestsSuite.xml</suite.file>
             </properties>
         </profile>
     </profiles>
