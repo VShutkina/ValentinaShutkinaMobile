@@ -2,8 +2,9 @@ package hw3.pages.nativeapp;
 
 import hw3.pages.AbstractBasePage;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 /**
@@ -12,7 +13,8 @@ import org.openqa.selenium.support.FindBy;
 public class BudgetActivityPage extends AbstractBasePage {
 
     @FindBy(id = "platkovsky.alexey.epamtestapp:id/action_bar")
-    private WebElement pageTitle;
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='Budget']")
+    private MobileElement pageTitle;
 
     public BudgetActivityPage(AppiumDriver driver) {
         super(driver);

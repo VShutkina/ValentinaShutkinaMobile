@@ -2,7 +2,8 @@ package hw3.pages.nativeapp;
 
 import hw3.pages.AbstractBasePage;
 import io.appium.java_client.AppiumDriver;
-import org.openqa.selenium.WebElement;
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.support.FindBy;
 
 /**
@@ -11,22 +12,26 @@ import org.openqa.selenium.support.FindBy;
 public class MainPage extends AbstractBasePage {
 
     @FindBy(id = "platkovsky.alexey.epamtestapp:id/login_email")
-    private WebElement loginEmailTextField;
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField//XCUIElementTypeTextField")
+    private MobileElement loginEmailTextField;
 
     @FindBy(id = "platkovsky.alexey.epamtestapp:id/login_pwd")
-    private WebElement passwordTextField;
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeSecureTextField//XCUIElementTypeSecureTextField")
+    private MobileElement passwordTextField;
 
     @FindBy(id = "platkovsky.alexey.epamtestapp:id/email_sign_in_button")
-    private WebElement signInButton;
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Sign In']")
+    private MobileElement signInButton;
 
     @FindBy(id = "platkovsky.alexey.epamtestapp:id/register_button")
-    private WebElement registerButton;
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Register new account']")
+    private MobileElement registerButton;
 
     public MainPage(AppiumDriver driver) {
         super(driver);
     }
 
-    public WebElement getLoginEmailTextField() {
+    public MobileElement getLoginEmailTextField() {
         return loginEmailTextField;
     }
 

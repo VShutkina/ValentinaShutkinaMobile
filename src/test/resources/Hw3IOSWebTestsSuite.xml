@@ -3,7 +3,7 @@
     <test name="iOS Web Tests">
         <groups>
             <run>
-                <include name="ios"/>
+                <include name="ios_web"/>
             </run>
         </groups>
         <classes>

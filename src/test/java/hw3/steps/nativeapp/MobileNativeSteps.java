@@ -5,8 +5,8 @@ import hw3.pages.nativeapp.MainPage;
 import hw3.pages.nativeapp.RegistrationPage;
 import hw3.setup.DriverSetup;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
 public class MobileNativeSteps extends DriverSetup {
 
@@ -26,7 +26,7 @@ public class MobileNativeSteps extends DriverSetup {
         mainPage.clickRegisterButton();
     }
 
-    public WebElement getLoginEmailTextField() {
+    public MobileElement getLoginEmailTextField() {
         return mainPage.getLoginEmailTextField();
     }
 
@@ -42,7 +42,7 @@ public class MobileNativeSteps extends DriverSetup {
         mainPage.clickSighInButton();
     }
 
-    public WebElement getEmailTextField() {
+    public MobileElement getEmailTextField() {
         return registrationPage.getEmailTextField();
     }
 

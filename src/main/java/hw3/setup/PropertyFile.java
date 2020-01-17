@@ -4,7 +4,8 @@ public enum PropertyFile {
 
     WEB("web.properties"),
     NATIVE("native.properties"),
-    IOS("ios.properties");
+    IOS_NATIVE("nativeIos.properties"),
+    IOS_WEB("webIos.properties");
 
     String appType;
 

@@ -12,6 +12,7 @@ import static org.testng.Assert.assertEquals;
 /**
  * This is test of a native application EPAMTestApp
  */
+@Test(groups = {"native", "ios_native"})
 public class MobileNativeTest extends DriverSetup {
 
     private static final String TITLE = "BudgetActivity";
@@ -23,7 +24,7 @@ public class MobileNativeTest extends DriverSetup {
 
     }
 
-    @Test(groups = {"native", "ios"}, description = "Test for native EPAMTestApp application")
+    @Test(description = "Test for native EPAMTestApp application")
     public void NativeAppTest() throws Exception {
         MobileNativeSteps nativeSteps = new MobileNativeSteps(driver);
         //1. Click register button
