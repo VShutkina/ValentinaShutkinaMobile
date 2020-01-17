@@ -1,8 +1,10 @@
 package hw3.setup;
 
+import hw3.api.MobileApi;
 import hw3.utils.TestProperties;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
+import io.restassured.http.ContentType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -27,6 +29,7 @@ public class DriverSetup extends TestProperties {
     protected static String UDID;
     protected static String APP_PACKAGE;
     protected static String APP_ACTIVITY;
+    protected static String BUNDLE_ID;
 
     /**
      * This method prepares driver and sets capabilities
@@ -45,6 +48,7 @@ public class DriverSetup extends TestProperties {
         UDID = getProp("udid");
         APP_ACTIVITY = getProp("appActivity");
         APP_PACKAGE = getProp("appPackage");
+        BUNDLE_ID = getProp("bundleId");
 
 
         // Setup test platform: Android or iOS. Browser also depends on a platform.
@@ -67,6 +71,24 @@ public class DriverSetup extends TestProperties {
             capabilities.setCapability(MobileCapabilityType.APP, app.getAbsolutePath());
             capabilities.setCapability("appPackage", APP_PACKAGE);
             capabilities.setCapability("appActivity", APP_ACTIVITY);
+            capabilities.setCapability("bundleId", BUNDLE_ID);
+            capabilities.setCapability("keepDevice", true);
+
+            //booking device by UDID
+            MobileApi
+                    .with()
+                    .path(String.format("device/%s", UDID))
+                    .callApi(System.getenv("TOKEN")).prettyPeek();
+
+            //install application on the device
+            MobileApi
+                    .with()
+                    .path(String.format("storage/install/%s", UDID))
+                    .contentType(ContentType.ANY)
+                    .multipart(app)
+                    .callApi(System.getenv("TOKEN")).prettyPeek();
+
+
         } else if (SUT != null && AUT == null) {
             capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, browser);
         } else {
