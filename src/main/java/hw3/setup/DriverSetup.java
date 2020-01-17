@@ -4,6 +4,7 @@ import hw3.api.MobileApi;
 import hw3.api.TokenReader;
 import hw3.utils.TestProperties;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.restassured.http.ContentType;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -17,7 +18,7 @@ import java.net.URL;
  */
 public class DriverSetup extends TestProperties {
 
-    protected static AppiumDriver driver = null;
+    protected static AppiumDriver<MobileElement> driver = null;
     protected static WebDriverWait wait;
     protected DesiredCapabilities capabilities;
 
@@ -58,7 +59,6 @@ public class DriverSetup extends TestProperties {
         // Setup test platform: Android or iOS. Browser also depends on a platform.
         switch (PLATFORM) {
             case "Android":
-                capabilities.setCapability(MobileCapabilityType.UDID, UDID);
                 browser = "Chrome";
                 break;
             case "iOS":
@@ -68,6 +68,7 @@ public class DriverSetup extends TestProperties {
                 throw new Exception("Unknown mobile platform");
         }
         capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, PLATFORM);
+        capabilities.setCapability(MobileCapabilityType.UDID, UDID);
 
         // Setup type of application (native or web)
         if (AUT != null && SUT == null) {
@@ -99,7 +100,7 @@ public class DriverSetup extends TestProperties {
             throw new Exception("Unclear type of mobile app");
         }
         if (driver == null) {
-            driver = new AppiumDriver(new URL(DRIVER), capabilities);
+            driver = new AppiumDriver<>(new URL(DRIVER), capabilities);
         }
 
     }
@@ -110,7 +111,7 @@ public class DriverSetup extends TestProperties {
      * @return
      * @throws Exception
      */
-    protected AppiumDriver driver() throws Exception {
+    protected AppiumDriver<MobileElement> driver() throws Exception {
         if (driver == null) {
             prepareDriver();
         }

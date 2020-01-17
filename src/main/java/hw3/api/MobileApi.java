@@ -12,6 +12,7 @@ import org.apache.http.HttpStatus;
 
 import java.io.File;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 
 import static io.restassured.http.ContentType.JSON;
@@ -28,7 +29,7 @@ public class MobileApi {
     private File multipart;
     private Method method = POST;
     private ContentType contentType = JSON;
-    private Charset charset = Charset.defaultCharset();
+    private Charset charset = StandardCharsets.UTF_8;
     private HashMap<String, String> params = new HashMap<String, String>();
 
     private MobileApi() {

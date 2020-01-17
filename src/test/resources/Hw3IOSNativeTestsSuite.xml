@@ -9,6 +9,8 @@
         <classes>
             <class name="hw3.scenarios.nativeapp.MobileNativeTest">
             </class>
+            <class name="hw3.scenarios.Hooks">
+            </class>
         </classes>
     </test>
 

@@ -19,5 +19,6 @@ public class SearchPage extends AbstractBasePage {
 
     public void fillTextInSearchField(String text) {
         searchField.sendKeys(text);
+        searchField.submit();
     }
 }

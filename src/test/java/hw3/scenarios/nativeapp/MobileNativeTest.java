@@ -12,7 +12,7 @@ import static org.testng.Assert.assertEquals;
 /**
  * This is test of a native application EPAMTestApp
  */
-@Test(groups = {"native", "ios_native"})
+//@Test(groups = {"native", "ios_native"})
 public class MobileNativeTest extends DriverSetup {
 
     private static final String TITLE = "BudgetActivity";
@@ -24,7 +24,8 @@ public class MobileNativeTest extends DriverSetup {
 
     }
 
-    @Test(description = "Test for native EPAMTestApp application")
+    @Test(description = "Test for native EPAMTestApp application",
+            groups = {"native", "ios_native"})
     public void NativeAppTest() throws Exception {
         MobileNativeSteps nativeSteps = new MobileNativeSteps(driver);
         //1. Click register button
@@ -37,6 +38,7 @@ public class MobileNativeTest extends DriverSetup {
         nativeSteps.fillUserNameTextField(USERNAME);
         nativeSteps.fillPasswordTextFieldOnPegPage(PASSWORD);
         nativeSteps.confirmPasswordTextField(PASSWORD);
+        nativeSteps.clickConfirmAgreements();
         nativeSteps.registerButtonClick();
         //4. wait some time until Main page is opened
         driverWait().until(ExpectedConditions.visibilityOf(nativeSteps.getLoginEmailTextField()));

@@ -12,7 +12,7 @@ import static org.testng.Assert.assertTrue;
 /**
  * This is a web test with searching in Google.com
  */
-@Test(groups = {"web", "ios_web"})
+//@Test(groups = {"web", "ios_web"})
 public class MobileWebTest extends DriverSetup {
 
     private static final String SEARCH_TEXT = "EPAM";
@@ -21,7 +21,8 @@ public class MobileWebTest extends DriverSetup {
     public MobileWebTest() throws IOException {
     }
 
-    @Test(description = "Test for searching in Google.com")
+    @Test(description = "Test for searching in Google.com",
+            groups = {"web", "ios_web"})
     public void WebAppTest() throws Exception {
         MobileWebSteps webSteps = new MobileWebSteps(driver);
         // 1. open google.com

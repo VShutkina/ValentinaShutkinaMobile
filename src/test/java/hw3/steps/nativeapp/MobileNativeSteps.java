@@ -13,9 +13,8 @@ public class MobileNativeSteps extends DriverSetup {
     private MainPage mainPage;
     private RegistrationPage registrationPage;
     private BudgetActivityPage budgetActivityPage;
-    private AppiumDriver driver;
 
-    public MobileNativeSteps(AppiumDriver driver) {
+    public MobileNativeSteps(AppiumDriver<MobileElement> driver) {
         this.mainPage = new MainPage(driver);
         this.registrationPage = new RegistrationPage(driver);
         this.budgetActivityPage = new BudgetActivityPage(driver);
@@ -72,5 +71,9 @@ public class MobileNativeSteps extends DriverSetup {
 
     public By pageTitleLocator() {
         return budgetActivityPage.pageTitleLocator();
+    }
+
+    public void clickConfirmAgreements() {
+        registrationPage.clickConfirmAgreements();
     }
 }
