@@ -18,9 +18,12 @@ import static io.restassured.http.ContentType.JSON;
 import static io.restassured.http.Method.POST;
 import static org.hamcrest.Matchers.lessThan;
 
+/**
+ * This class describes REAST API for integration with EPAM Mobile Cloud
+ */
 public class MobileApi {
 
-    public static final String baseUrl = "https://mobilecloud.epam.com/automation/api/";
+    private static final String baseUrl = "https://mobilecloud.epam.com/automation/api/";
     private String path = "";
     private File multipart;
     private Method method = POST;
