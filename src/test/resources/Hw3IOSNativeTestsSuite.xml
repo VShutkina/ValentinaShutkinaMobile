@@ -1,6 +1,6 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="iOS Tests Suite">
-    <test name="iOS Tests">
+<suite name="iOS Native Tests Suite">
+    <test name="iOS Native Tests">
         <groups>
             <run>
                 <include name="ios"/>

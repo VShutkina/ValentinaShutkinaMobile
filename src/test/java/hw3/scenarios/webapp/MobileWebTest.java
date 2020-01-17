@@ -1,11 +1,8 @@
 package hw3.scenarios.webapp;
 
 import hw3.setup.DriverSetup;
-import hw3.setup.PropertyFile;
 import hw3.steps.webapp.MobileWebSteps;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
@@ -24,13 +21,7 @@ public class MobileWebTest extends DriverSetup {
     public MobileWebTest() throws IOException {
     }
 
-    @BeforeSuite(groups = "web", description = "Prepare driver to run web test(s)")
-    void setUpWeb() throws Exception {
-        setPropertyFile(PropertyFile.WEB);
-        prepareDriver();
-    }
-
-    @Test(groups = "web", description = "Test for searching in Google.com")
+    @Test(groups = {"web"}, description = "Test for searching in Google.com")
     public void WebAppTest() throws Exception {
         MobileWebSteps webSteps = new MobileWebSteps(driver);
         // 1. open google.com
@@ -43,10 +34,5 @@ public class MobileWebTest extends DriverSetup {
         driverWait().until(ExpectedConditions.urlContains(SUT.concat(GOOGLE_SEARCH_URL)));
         // 5. check that search results are not empty
         assertTrue(!webSteps.getResults().isEmpty(), "Result is empty!");
-    }
-
-    @AfterSuite(groups = "web", description = "Close driver on test completion")
-    public void tearDown() throws Exception {
-        driver.quit();
     }
 }

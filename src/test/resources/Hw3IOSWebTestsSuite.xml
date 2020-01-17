@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="iOS Web Tests Suite">
+    <test name="iOS Web Tests">
+        <groups>
+            <run>
+                <include name="ios"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="hw3.scenarios.webapp.MobileWebTest">
+            </class>
+        </classes>
+    </test>
+
+</suite>

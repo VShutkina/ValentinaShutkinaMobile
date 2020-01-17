@@ -1,6 +1,7 @@
 package hw3.setup;
 
 import hw3.api.MobileApi;
+import hw3.api.TokenReader;
 import hw3.utils.TestProperties;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
@@ -30,6 +31,7 @@ public class DriverSetup extends TestProperties {
     protected static String APP_PACKAGE;
     protected static String APP_ACTIVITY;
     protected static String BUNDLE_ID;
+    protected static String TOKEN;
 
     /**
      * This method prepares driver and sets capabilities
@@ -49,6 +51,8 @@ public class DriverSetup extends TestProperties {
         APP_ACTIVITY = getProp("appActivity");
         APP_PACKAGE = getProp("appPackage");
         BUNDLE_ID = getProp("bundleId");
+        TOKEN = TokenReader.getToken().getProperty("token");
+        DRIVER = DRIVER.replace("{token}", TOKEN);
 
 
         // Setup test platform: Android or iOS. Browser also depends on a platform.
@@ -78,7 +82,7 @@ public class DriverSetup extends TestProperties {
             MobileApi
                     .with()
                     .path(String.format("device/%s", UDID))
-                    .callApi(System.getenv("TOKEN")).prettyPeek();
+                    .callApi(TOKEN).prettyPeek();
 
             //install application on the device
             MobileApi
@@ -86,7 +90,7 @@ public class DriverSetup extends TestProperties {
                     .path(String.format("storage/install/%s", UDID))
                     .contentType(ContentType.ANY)
                     .multipart(app)
-                    .callApi(System.getenv("TOKEN")).prettyPeek();
+                    .callApi(TOKEN).prettyPeek();
 
 
         } else if (SUT != null && AUT == null) {

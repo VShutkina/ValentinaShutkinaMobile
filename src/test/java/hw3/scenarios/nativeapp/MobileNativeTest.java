@@ -1,11 +1,8 @@
 package hw3.scenarios.nativeapp;
 
 import hw3.setup.DriverSetup;
-import hw3.setup.PropertyFile;
 import hw3.steps.nativeapp.MobileNativeSteps;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
@@ -24,18 +21,6 @@ public class MobileNativeTest extends DriverSetup {
 
     public MobileNativeTest() throws IOException {
 
-    }
-
-    @BeforeSuite(groups = {"native"}, description = "Prepare driver to run native test(s)")
-    void setUpNative() throws Exception {
-        setPropertyFile(PropertyFile.NATIVE);
-        prepareDriver();
-    }
-
-    @BeforeSuite(groups = {"ios"}, description = "Prepare driver to run native test(s)")
-    void setUpIosNative() throws Exception {
-        setPropertyFile(PropertyFile.IOS);
-        prepareDriver();
     }
 
     @Test(groups = {"native", "ios"}, description = "Test for native EPAMTestApp application")
@@ -66,10 +51,5 @@ public class MobileNativeTest extends DriverSetup {
         assertEquals(actualTitle, TITLE,
                 String.format("Expected %s page title, but got %s",
                         TITLE, actualTitle));
-    }
-
-    @AfterSuite(groups = {"native", "ios"}, description = "Close driver on all tests completion")
-    public void tearDown() throws Exception {
-        driver.quit();
     }
 }

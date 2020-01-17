@@ -34,6 +34,7 @@ public class MobileApi {
     private MobileApi() {
     }
 
+    // Request builder for work with mobile cloud
     public static RequestBuilder with() {
         MobileApi api = new MobileApi();
         return new RequestBuilder(api);
@@ -48,10 +49,10 @@ public class MobileApi {
     }
 
     public static RequestSpecification baseRequestConfiguration(String token) {
+        // token = TokenReader.getToken().getProperty("token");
         return new RequestSpecBuilder()
-                .setContentType(JSON)
-                .setAccept(JSON)
                 .setBaseUri(baseUrl)
+                .setRelaxedHTTPSValidation()
                 .addHeader("Authorization", String.format("Bearer %s", token))
                 .build();
 
