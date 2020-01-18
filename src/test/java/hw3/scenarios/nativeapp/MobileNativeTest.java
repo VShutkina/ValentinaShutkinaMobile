@@ -12,10 +12,9 @@ import static org.testng.Assert.assertEquals;
 /**
  * This is test of a native application EPAMTestApp
  */
-//@Test(groups = {"native", "ios_native"})
 public class MobileNativeTest extends DriverSetup {
 
-    private String EMAIL = "test156@gmail.com";
+    private String EMAIL = "test@gmail.com";
     private String USERNAME = "Valentina";
     private String PASSWORD = "Qwerty2235";
 

@@ -12,7 +12,6 @@ import static org.testng.Assert.assertTrue;
 /**
  * This is a web test with searching in Google.com
  */
-//@Test(groups = {"web", "ios_web"})
 public class MobileWebTest extends DriverSetup {
 
     private static final String SEARCH_TEXT = "EPAM";

@@ -70,9 +70,11 @@ public class RegistrationPage extends AbstractBasePage {
         switch (platform) {
             case "Android":
                 registerButton.click();
+                break;
             case "iOS":
                 registerButton.click();
                 registerButton.click();
+                break;
         }
     }
 }
