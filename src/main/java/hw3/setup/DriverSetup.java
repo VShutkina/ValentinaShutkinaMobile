@@ -32,6 +32,7 @@ public class DriverSetup extends TestProperties {
     protected static String APP_PACKAGE;
     protected static String APP_ACTIVITY;
     protected static String BUNDLE_ID;
+    protected static String TITLE;
     protected static String TOKEN;
 
     /**
@@ -54,6 +55,7 @@ public class DriverSetup extends TestProperties {
         BUNDLE_ID = getProp("bundleId");
         TOKEN = TokenReader.getToken().getProperty("token");
         DRIVER = DRIVER.replace("{token}", TOKEN);
+        TITLE = getProp("title");
 
 
         // Setup test platform: Android or iOS. Browser also depends on a platform.

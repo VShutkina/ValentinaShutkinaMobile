@@ -65,7 +65,14 @@ public class RegistrationPage extends AbstractBasePage {
         confirmAgreements.click();
     }
 
-    public void registerButtonClick() {
-        registerButton.click();
+    //There is a problem on tested iPhone XS
+    public void registerButtonClick(String platform) {
+        switch (platform) {
+            case "Android":
+                registerButton.click();
+            case "iOS":
+                registerButton.click();
+                registerButton.click();
+        }
     }
 }

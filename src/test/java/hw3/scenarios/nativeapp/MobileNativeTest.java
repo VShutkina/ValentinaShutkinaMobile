@@ -15,8 +15,7 @@ import static org.testng.Assert.assertEquals;
 //@Test(groups = {"native", "ios_native"})
 public class MobileNativeTest extends DriverSetup {
 
-    private static final String TITLE = "BudgetActivity";
-    private String EMAIL = "test@gmail.com";
+    private String EMAIL = "test156@gmail.com";
     private String USERNAME = "Valentina";
     private String PASSWORD = "Qwerty2235";
 
@@ -39,7 +38,7 @@ public class MobileNativeTest extends DriverSetup {
         nativeSteps.fillPasswordTextFieldOnPegPage(PASSWORD);
         nativeSteps.confirmPasswordTextField(PASSWORD);
         nativeSteps.clickConfirmAgreements();
-        nativeSteps.registerButtonClick();
+        nativeSteps.registerButtonClick(PLATFORM);
         //4. wait some time until Main page is opened
         driverWait().until(ExpectedConditions.visibilityOf(nativeSteps.getLoginEmailTextField()));
         //5. sign in with created user on Main page
@@ -47,10 +46,10 @@ public class MobileNativeTest extends DriverSetup {
         nativeSteps.fillPasswordTextField(PASSWORD);
         nativeSteps.clickSighInButton();
         // Wait for Budget Activity page title presented
-        driverWait().until(ExpectedConditions.presenceOfElementLocated(nativeSteps.pageTitleLocator()));
+        driverWait().until(ExpectedConditions.presenceOfElementLocated(nativeSteps.pageTitleLocator(PLATFORM)));
         // Checking if the Budget Activity page title
         // matches to expected title
-        String actualTitle = nativeSteps.getPageTitle();
+        String actualTitle = nativeSteps.getPageTitle(PLATFORM);
         assertEquals(actualTitle, TITLE,
                 String.format("Expected %s page title, but got %s",
                         TITLE, actualTitle));

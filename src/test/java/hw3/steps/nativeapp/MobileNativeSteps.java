@@ -61,16 +61,16 @@ public class MobileNativeSteps extends DriverSetup {
         registrationPage.confirmPasswordTextField(password);
     }
 
-    public void registerButtonClick() {
-        registrationPage.registerButtonClick();
+    public void registerButtonClick(String platform) {
+        registrationPage.registerButtonClick(platform);
     }
 
-    public String getPageTitle() {
-        return budgetActivityPage.getPageTitle();
+    public String getPageTitle(String platform) {
+        return budgetActivityPage.getPageTitle(platform);
     }
 
-    public By pageTitleLocator() {
-        return budgetActivityPage.pageTitleLocator();
+    public By pageTitleLocator(String platform) {
+        return budgetActivityPage.pageTitleLocator(platform);
     }
 
     public void clickConfirmAgreements() {
