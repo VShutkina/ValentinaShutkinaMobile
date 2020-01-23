@@ -53,7 +53,8 @@ public class DriverSetup extends TestProperties {
         APP_ACTIVITY = getProp("appActivity");
         APP_PACKAGE = getProp("appPackage");
         BUNDLE_ID = getProp("bundleId");
-        TOKEN = TokenReader.getToken().getProperty("token");
+        TOKEN = TokenReader.getToken();
+        //TOKEN = TokenReader.getToken().getProperty("token");
         DRIVER = DRIVER.replace("{token}", TOKEN);
         TITLE = getProp("title");
 

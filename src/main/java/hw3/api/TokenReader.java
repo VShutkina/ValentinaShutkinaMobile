@@ -1,7 +1,5 @@
 package hw3.api;
 
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.util.Properties;
 
 /**
@@ -9,17 +7,22 @@ import java.util.Properties;
  */
 public class TokenReader extends Properties {
 
-    private static TokenReader token;
+    private static String token;
 
-    public static TokenReader getToken() {
+    public static String getToken() {
         if (token == null) {
-            token = new TokenReader();
-            try {
-                token.load(new FileInputStream(
-                        String.format("%s/%s", System.getProperty("user.dir"), "common.properties")));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            token = System.getenv("TOKEN");
+
+            //        if (token == null) {
+//            token = new TokenReader();
+//            try {
+//                token.load(new FileInputStream(
+//                        String.format("%s/%s", System.getProperty("user.dir"), "common.properties")));
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//        return token;
         }
         return token;
     }
